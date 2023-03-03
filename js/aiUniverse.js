@@ -3,16 +3,17 @@
 const loadAllData = () => {
     fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(res => res.json())
-    .then(data => showAllData(data));
+    .then(data => showAllData(data.data.tools.slice(0, 6)));
 };
 
 const showAllData = (aiUniverses) => {
     const aiContainer = document.getElementById('ai-info');
-    aiUniverses.data.tools.slice(0, 6).forEach((aiUniverse) => {
+    aiContainer.innerHTML = "";
+    aiUniverses.forEach((aiUniverse) => {
         console.log(aiUniverse);
         const div = document.createElement('div')
         div.innerHTML = `
-        <div class="card w-full bg-base-100 shadow-2xl">
+        <div class="card w-full h-full bg-base-100 shadow-2xl">
           <figure class="px-10 pt-10">
            <img src="${aiUniverse.image}" alt="Shoes" class="rounded-xl" />
           </figure>
@@ -53,3 +54,9 @@ const showAllData = (aiUniverses) => {
 };
 
 loadAllData();
+
+const seeMore = () =>{
+    fetch('https://openapi.programming-hero.com/api/ai/tools')
+    .then(res => res.json())
+    .then(data => showAllData(data.data.tools));
+}
