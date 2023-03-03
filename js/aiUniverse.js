@@ -18,7 +18,7 @@ const showAllData = (aiUniverses) => {
           </figure>
         <div class="card-body">
         <div class="ml-7">
-          <h1 class="card-title font-semibold text-[25px] mb-4">Features</h1>
+          <h1 class="card-title font-semibold text-xl mb-4">Features</h1>
           <p class="tex-darker">1 ${aiUniverse.features[0]}</p>
           <p class="tex-darker">2 ${aiUniverse.features[1]}</p>
           <p class="tex-darker">3 ${aiUniverse.features[2]}</p>
@@ -26,6 +26,25 @@ const showAllData = (aiUniverses) => {
           <div class="px-[25px]">
           <hr>
           </div>
+          <div class="flex justify-between items-center">
+          <div class="ml-7">
+          <div>
+          <h3 class="card-title font-semibold text-xl mb-3">${aiUniverse.name}</h3>
+          </div>
+          <div class="flex gap-3">
+            <div>
+            <img class="h-5 w-5" src="images/date.png" alt="">
+            </div>
+            <div>
+            <p class="tex-darker">${aiUniverse.published_in}</p>
+            </div>
+          </div>
+          </div>
+          <div>
+           <label for="my-model" class="btn bg-white hover:bg-white border-none"><img class="h-10 w-10 mr-4" src="images/arrow.png" alt=""></label>
+          </div>
+          </div>
+         </div>
        </div>
       </div>
         `;
