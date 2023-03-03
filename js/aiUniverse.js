@@ -10,7 +10,7 @@ const showAllData = (aiUniverses) => {
     const aiContainer = document.getElementById('ai-info');
     aiContainer.innerHTML = "";
     aiUniverses.forEach((aiUniverse) => {
-        console.log(aiUniverse);
+        // console.log(aiUniverse.id);
         const div = document.createElement('div')
         div.innerHTML = `
         <div class="card w-full h-full bg-base-100 shadow-2xl">
@@ -42,7 +42,7 @@ const showAllData = (aiUniverses) => {
           </div>
           </div>
           <div>
-           <label for="my-model" class="btn bg-white hover:bg-white border-none"><img class="h-10 w-10 mr-4" src="images/arrow.png" alt=""></label>
+           <label for="my-model" class="btn bg-white hover:bg-white border-none"><img onclick="showDetails('${aiUniverse.id}')" class="h-10 w-10 mr-4" src="images/arrow.png" alt=""></label>
           </div>
           </div>
          </div>
@@ -52,6 +52,10 @@ const showAllData = (aiUniverses) => {
         aiContainer.appendChild(div);
     });
 };
+
+const showDetails = (id) =>{
+ const URL = `https://openapi.programming-hero.com/api/ai/tool/01`
+}
 
 loadAllData();
 
