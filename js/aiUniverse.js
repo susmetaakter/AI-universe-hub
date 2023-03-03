@@ -9,19 +9,23 @@ const loadAllData = () => {
 const showAllData = (aiUniverses) => {
     const aiContainer = document.getElementById('ai-info');
     aiUniverses.data.tools.slice(0, 6).forEach((aiUniverse) => {
-        console.log(aiUniverse.image);
+        console.log(aiUniverse);
         const div = document.createElement('div')
         div.innerHTML = `
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card w-full bg-base-100 shadow-2xl">
           <figure class="px-10 pt-10">
            <img src="${aiUniverse.image}" alt="Shoes" class="rounded-xl" />
           </figure>
-        <div class="card-body items-center text-center">
-          <h2 class="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-         <div class="card-actions">
-       <button class="btn btn-primary">Buy Now</button>
-        </div>
+        <div class="card-body">
+        <div class="ml-7">
+          <h1 class="card-title font-semibold text-[25px] mb-4">Features</h1>
+          <p class="tex-darker">1 ${aiUniverse.features[0]}</p>
+          <p class="tex-darker">2 ${aiUniverse.features[1]}</p>
+          <p class="tex-darker">3 ${aiUniverse.features[2]}</p>
+          </div>
+          <div class="px-[25px]">
+          <hr>
+          </div>
        </div>
       </div>
         `;
