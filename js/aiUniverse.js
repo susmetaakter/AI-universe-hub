@@ -110,8 +110,8 @@ const showAiModal = (value) => {
       </div>
       </div>
       <div class="border p-5 rounded-lg">
-      <img src="${value.image_link[0]}" alt="">
-      <p class="bg-red-500 text-white text-center rounded w-75 absolute z-1 top-0 end-0 mt-20 ${value.accuracy.score ? 'block' : 'hidden'}" >${value.accuracy.score} % accuracy</p>
+      <img class="rounded-lg" src="${value.image_link[0]}" alt="">
+      <p class="bg-red-500 text-white text-center px-1 rounded w-75 absolute z-1 top-0 end-0 mt-12 ml-72 ${value.accuracy.score ? 'block' : 'hidden'}" >${value.accuracy.score} % accuracy</p>
       <h1 class="py-4 text-lg font-bold mt-5">${value.input_output_examples[0].input ? value.input_output_examples[0].input : 'Not Found'}</h1>
       <p class="py-4 text-xs">${value.input_output_examples[0].output ? value.input_output_examples[0].output : 'Not Found'}</p>
       </div>
