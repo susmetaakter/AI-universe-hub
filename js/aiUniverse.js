@@ -19,10 +19,10 @@ const showAllData = (aiUniverses) => {
           </figure>
         <div class="card-body">
         <div class="ml-7">
-          <h1 class="card-title font-semibold text-xl mb-4">Features</h1>
-          <p class="tex-darker">1 ${aiUniverse.features[0]}</p>
-          <p class="tex-darker">2 ${aiUniverse.features[1]}</p>
-          <p class="tex-darker">3 ${aiUniverse.features[2]}</p>
+          <h1 class="card-title font-bold text-xl mb-4">Features</h1>
+          <p class="tex-darker">1 ${aiUniverse.features[0] ? aiUniverse.features[0] : 'Not Found' }</p>
+          <p class="tex-darker">2 ${aiUniverse.features[1] ? aiUniverse.features[1] : 'Not Found'}</p>
+          <p class="tex-darker">3 ${aiUniverse.features[2] ? aiUniverse.features[2] : 'Not Found'}</p>
           </div>
           <div class="px-[25px]">
           <hr>
@@ -30,7 +30,7 @@ const showAllData = (aiUniverses) => {
           <div class="flex justify-between items-center">
           <div class="ml-7">
           <div>
-          <h3 class="card-title font-semibold text-xl mb-3">${aiUniverse.name}</h3>
+          <h3 class="card-title font-bold text-xl mb-3">${aiUniverse.name}</h3>
           </div>
           <div class="flex gap-3">
             <div>
@@ -74,29 +74,44 @@ const showAiModal = (value) => {
     const div = document.createElement('div');
     div.classList.add('modal');
     div.innerHTML = `
-    <div class="modal-box relative flex gap-5 max-w-5xl max-h-3xl">
+    <div class="modal-box relative flex gap-5 max-w-5xl max-h-3xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <div class="border p-5 border-red-400 rounded-lg bg-red-100 ">
+      <div class="border p-5 border-red-400 rounded-lg bg-red-50 ">
       <h3 class="text-lg font-bold">${value.description}</h3>
-      <div class="flex gap-2">
+      <div class="flex gap-2 mb-2">
       <div class="bg-white rounded-lg p-3 text-green-600 font-bold text-sm">
-      <p>${value.pricing[0].price}</p>
-      <p>${value.pricing[0].plan}</p>
+      <p>${value.pricing[0].price ? value.pricing[0].price : 'Not Found'}</p>
+      <p>${value.pricing[0].plan ? value.pricing[0].plan : 'Not Found'}</p>
       </div>
       <div class="bg-white rounded-lg text-orange-500 font-bold p-3 text-sm">
-      <p>${value.pricing[1].price}</p>
-      <p>${value.pricing[1].plan}</p>
+      <p>${value.pricing[1].price ? value.pricing[1].price : 'Not Found'}</p>
+      <p>${value.pricing[1].plan ? value.pricing[1].plan : 'Not Found'}</p>
       </div>
       <div class="text-sm font-bold bg-white rounded-lg p-3 text-red-600">
-      <p>${value.pricing[2].price}</p>
-      <p>${value.pricing[2].plan}</p>
+      <p>${value.pricing[2].price ? value.pricing[2].price : 'Not Found'}</p>
+      <p>${value.pricing[2].plan ? value.pricing[2].plan : 'Not Found'}</p>
       </div>
       </div>
-      </div>
+      <div class="flex">
       <div>
+      <h1 class="font-bold text-xl mb-2">Features</h1>
+      <p class="ml-2 text-sm">.${value.features[1].feature_name ? value.features[1].feature_name : 'Not Found'}</p>
+      <p class="ml-2 text-sm">.${value.features[2].feature_name ? value.features[2].feature_name : 'Not Found'}</p>
+      <p class="ml-2 text-sm">.${value.features[3].feature_name ? value.features[3].feature_name : 'Not Found'}</p>
+      </div>
+      <div class="ml-10">
+      <h1 class="font-bold text-xl mb-2">Integrations</h1>
+      <p class="ml-2 text-sm">.${value.integrations[0] ? value.integrations[0] : 'Not Found'}</p>
+      <p class="ml-2 text-sm">.${value.integrations[1] ? value.integrations[1] : 'Not Found'}</p>
+      <p class="ml-2 text-sm">.${value.integrations[2] ? value.integrations[2] : 'Not Found'}</p>
+      </div>
+      </div>
+      </div>
+      <div class="border p-5 rounded-lg">
       <img src="${value.image_link[0]}" alt="">
-      <h1 class="py-4 text-lg font-bold mt-5">${value.input_output_examples[0].input}</h1>
-      <p class="py-4 text-xs">${value.input_output_examples[0].output}</p>
+      <p>${value.accuracy.score ? value.accuracy.score : 'Not Found'}</p>
+      <h1 class="py-4 text-lg font-bold mt-5">${value.input_output_examples[0].input ? value.input_output_examples[0].input : 'Not Found'}</h1>
+      <p class="py-4 text-xs">${value.input_output_examples[0].output ? value.input_output_examples[0].output : 'Not Found'}</p>
       </div>
    </div>
     `;
