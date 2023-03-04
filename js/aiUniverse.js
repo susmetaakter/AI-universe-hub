@@ -53,6 +53,8 @@ const showAllData = (aiUniverses) => {
         `;
         aiContainer.appendChild(div);
     });
+
+   toggleSpinner(false);
 };
 
 const showDetails = (id) =>{
@@ -74,8 +76,8 @@ const showAiModal = (value) => {
     const div = document.createElement('div');
     div.classList.add('modal');
     div.innerHTML = `
-    <div class="modal-box relative flex gap-5 max-w-5xl max-h-3xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <div class="modal-box relative flex grid grid-cols-1 lg:grid-cols-2 gap-5 max-w-5xl max-h-3xl">
+      <label for="my-modal-3" class="btn btn-sm btn-circle border-0 bg-red-500 absolute right-2 top-2">✕</label>
       <div class="border p-5 border-red-400 rounded-lg bg-red-50 ">
       <h3 class="text-lg font-bold">${value.description}</h3>
       <div class="flex gap-2 mb-2">
@@ -109,7 +111,7 @@ const showAiModal = (value) => {
       </div>
       <div class="border p-5 rounded-lg">
       <img src="${value.image_link[0]}" alt="">
-      <p>${value.accuracy.score ? value.accuracy.score : 'Not Found'}</p>
+      <div class="absolute"><p>${value.accuracy.score ? value.accuracy.score : 'Not Found'}</p></div>
       <h1 class="py-4 text-lg font-bold mt-5">${value.input_output_examples[0].input ? value.input_output_examples[0].input : 'Not Found'}</h1>
       <p class="py-4 text-xs">${value.input_output_examples[0].output ? value.input_output_examples[0].output : 'Not Found'}</p>
       </div>
@@ -120,7 +122,18 @@ const showAiModal = (value) => {
 
 loadAllData();
 const seeMore = () =>{
+    toggleSpinner(true);
     fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(res => res.json())
     .then(data => showAllData(data.data.tools));
+}
+
+const toggleSpinner = isLoading =>{
+    const loaderSection = document.getElementById('spinner');
+    if(isLoading){
+        loaderSection.classList.remove('hidden')
+    }
+    else{
+        loaderSection.classList.add('hidden')
+    }
 }

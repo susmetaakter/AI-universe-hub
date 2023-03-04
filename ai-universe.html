@@ -16,6 +16,16 @@
     <section id="ai-info" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></section>
     <div class="text-center">
         <button onclick="seeMore()" class=" bg-red-500 px-5 py-3 text-sm font-medium rounded-lg text-white mt-5 mb-5">See More</button>
+        <div id="spinner" class="flex items-center justify-center my-5 hidden">
+            <div
+              class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status">
+              <span
+                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                >Loading...</span
+              >
+            </div>
+          </div>
     </div>
    <div id="modal-info">
      <input type="checkbox" id="my-modal-3" class="modal-toggle" />
